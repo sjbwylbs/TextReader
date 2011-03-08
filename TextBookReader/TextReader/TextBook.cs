@@ -1,16 +1,30 @@
 ﻿using System;
+using System.IO;
 
 namespace TextReader
 {
     [Serializable]
     public class TextBook
     {
-        public int Lines{get;set;}
-        public TextBook()
+      
+
+
+        private TextBook(string fullfilename)
         {
+            FileInfo fi = new FileInfo(fullfilename);
+            FullName = fi.FullName;
+            FileName = fi.Name;
+            Lenght = fi.Length;
             Current = 0;
+            LastAccessTime = fi.LastAccessTime;
             Desc = "";
         }
+
+        public static TextBook NewTextBook(string fullfilename)
+        {
+            return new TextBook(fullfilename);
+        }
+
 
         //全名
 
@@ -18,11 +32,11 @@ namespace TextReader
 
         //文件名
 
-        public string Name { get; set; }
+        public string FileName { get; set; }
 
         //书名
 
-        public string Title { get; set; }
+        public string BookName { get; set; }
 
         //作者
 
@@ -51,5 +65,10 @@ namespace TextReader
         //章节目录
 
         public Catalog Catalogs { get; set; }
+
+        //行数
+
+        public int Lines { get; set; }
+
     }
 }

@@ -13,6 +13,7 @@ namespace TextReader
     public partial class TextReader : Form
     {
         private TRTextBox content;
+        BookStore bs = new BookStore();
         TextBook tb;
         private string cacheDir;
         public TextReader()
@@ -33,12 +34,8 @@ namespace TextReader
             {
                 FileInfo fi = new FileInfo(openFileDialog1.FileName);
 
-                tb = new TextBook();
-                tb.FullName = fi.FullName;
-                tb.Name = fi.Name;
-                tb.Lenght = fi.Length;
-                tb.Current = 0;
-                tb.LastAccessTime=fi.LastAccessTime;
+                tb = TextBook.NewTextBook(fi.FullName);
+              
                 //查找是否有缓存的章节目录
                 if (File.Exists(CacheFile()))
                 {
@@ -50,24 +47,24 @@ namespace TextReader
                     //如果不存在则生成目录章节
                     GenCatalog();
                 }
+
+                //显示书名和作者
+                this.Text = string.Format("文本小说阅读器 {0}-{1}", tb.BookName, tb.Author);
+                foreach (ToolStripItem i in tsCategories.DropDownItems)
+                {
+                    //清除已有的列表
+                    if (i.Name.Equals(this.toolStrip1.Name))
+                        tsCategories.DropDownItems.Remove(i);
+                }
+
+
+                new Thread(new ThreadStart(ShowCatalog)).Start();
             }
-
-            this.Text = string.Format("{0}-{1}",tb.Title,tb.Author);
-            foreach (ToolStripItem i in toolStripButton2.DropDownItems)
-            {
-                if(i.Name.Equals(this.toolStrip1.Name))
-                toolStripButton2.DropDownItems.Remove(i);
-            }
-            
-
-           new Thread(new ThreadStart(ShowCatalog)).Start();
-
-            
         }
 
         private string CacheFile()
         {
-            string cacheFile = Path.Combine(cacheDir, tb.Name + ".~");
+            string cacheFile = Path.Combine(cacheDir, tb.FileName + ".~");
             return cacheFile;
         }
 
@@ -83,12 +80,17 @@ namespace TextReader
             sw.Close();
         }
 
-        private void ImportCatalog()
+        private void ImportCatalog(string cachefile)
         {
-            Stream sr = File.OpenRead(CacheFile());
+            Stream sr = File.OpenRead(cachefile);
             BinaryFormatter bf = new BinaryFormatter();
             tb = (TextBook)bf.Deserialize(sr);
             sr.Close();
+        }
+
+        private void ImportCatalog()
+        {
+            ImportCatalog(CacheFile());
         }
 
         private void ShowCatalog()
@@ -113,7 +115,7 @@ namespace TextReader
             }
             else
             {
-                toolStripButton2.DropDownItems.Add(tsmi);
+                tsCategories.DropDownItems.Add(tsmi);
             }
         }
 
@@ -126,7 +128,7 @@ namespace TextReader
             string buffer;
             Regex re = new Regex("书名:\\w{1,50}", RegexOptions.IgnorePatternWhitespace);
 
-            while (string.IsNullOrEmpty(tb.Title))
+            while (string.IsNullOrEmpty(tb.BookName))
             {
                 buffer = sr.ReadLine();
                 tb.Lines++;
@@ -136,7 +138,7 @@ namespace TextReader
                     Match m = re.Match(buffer);
                     if (m.Success)
                     {
-                        tb.Title = m.Value;
+                        tb.BookName = m.Value;
                         break;
                     }
                 }
@@ -224,37 +226,49 @@ namespace TextReader
 
             CatalogPuple puple = tb.Catalogs.CatalogList[tb.CurrentCatalog];
 
-            this.panel1.Controls[0].Text = puple.Content;
+            this.pContent.Controls[0].Text = puple.Content;
         }
 
         
         private void TextReader_Load(object sender, EventArgs e)
         {
             Image bgimage=Image.FromFile(@"skins\black.gif");
-            this.panel1.BackgroundImage = bgimage;
-            this.panel1.BackgroundImageLayout = ImageLayout.Tile;
+            this.pContent.BackgroundImage = bgimage;
+            this.pContent.BackgroundImageLayout = ImageLayout.Tile;
             cacheDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Settings.Default.CachePath);
 
             if (!Directory.Exists(cacheDir))
             {
                 Directory.CreateDirectory(cacheDir);
             }
+
+            
             string[] files = Directory.GetFiles(cacheDir, "*.txt.~");
             foreach(string s in files)
             {
-                this.toolStripDropDownButton2.DropDownItems.Add(new BookStore(s));
+                TextBook t = TextBook.NewTextBook(s);
+                bs.Add(t);
+                ToolStripMenuItem item = new ToolStripMenuItem(t.BookName);
+                item.Click += new EventHandler(books_Click);
+                this.tsBooks.DropDownItems.Add(item);
             }
 
             content = new TRTextBox();
             content.Name = "content";
             content.BackgroundImage = bgimage;
             content.BackgroundImageLayout = ImageLayout.Tile;
-            content.Size = this.panel1.Size;
+            content.Size = this.pContent.Size;
             content.ScrollBars = ScrollBars.Vertical;
             content.Multiline = true;
             content.Font = new Font("微软雅黑", 20);
-            this.panel1.Controls.Add(content);
+            this.pContent.Controls.Add(content);
+        }
 
+        void books_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem tsmi = sender as ToolStripMenuItem;
+            tb = bs.Find(b => b.BookName.Equals(tsmi.Text));
+            ImportCatalog();
         }
 
         private void clickToSeeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -266,7 +280,7 @@ namespace TextReader
         {
             Size s = this.ClientSize;
             s.Height -= 80;
-            this.panel1.Size = s;
+            this.pContent.Size = s;
 
             this.button1.Location=new Point(this.button1.Location.X,s.Height + 5);
             this.button2.Location = new Point(this.button2.Location.X, s.Height + 5);
@@ -290,7 +304,7 @@ namespace TextReader
             tb.CurrentCatalog--;
             CatalogPuple puple = tb.Catalogs.CatalogList[tb.CurrentCatalog];
 
-            this.panel1.Controls[0].Text = puple.Content;
+            this.pContent.Controls[0].Text = puple.Content;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -298,19 +312,19 @@ namespace TextReader
             tb.CurrentCatalog++;
             CatalogPuple puple = tb.Catalogs.CatalogList[tb.CurrentCatalog];
 
-            this.panel1.Controls[0].Text = puple.Content;
+            this.pContent.Controls[0].Text = puple.Content;
         }
 
         private void 夜间模式ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TRTextBox content = (TRTextBox)this.panel1.Controls["content"];
+            TRTextBox content = (TRTextBox)this.pContent.Controls["content"];
             content.BackColor = Color.Black;
             content.ForeColor = Color.White;
         }
 
         private void 普通模式ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TRTextBox content = (TRTextBox)this.panel1.Controls["content"];
+            TRTextBox content = (TRTextBox)this.pContent.Controls["content"];
             content.BackColor = Color.White;
             content.ForeColor = Color.Black;
         }

@@ -130,26 +130,26 @@
     <value>4</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="pContent.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="pContent.Size" type="System.Drawing.Size, System.Drawing">
     <value>1067, 512</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+  <data name="pContent.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
+  <data name="&gt;&gt;pContent.Name" xml:space="preserve">
+    <value>pContent</value>
   </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+  <data name="&gt;&gt;pContent.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;pContent.Parent" xml:space="preserve">
     <value>toolStripContainer1.ContentPanel</value>
   </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;pContent.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
@@ -282,7 +282,7 @@
   <data name="toolStrip1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
   </data>
-  <data name="toolStripButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="tsFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIISURBVDhPpZP7S1NxGMbPPxKaXVUkMEq8IpKUCoY/hGgI
@@ -297,16 +297,22 @@
         KlSA8/zRh9ABIDUG+1JpAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="toolStripButton1.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="tsFile.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="toolStripButton1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 22</value>
   </data>
-  <data name="toolStripButton1.Text" xml:space="preserve">
+  <data name="tsFile.Text" xml:space="preserve">
     <value>打开小说</value>
   </data>
-  <data name="toolStripButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="tsmiListCategories.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="tsmiListCategories.Text" xml:space="preserve">
+    <value>点击查看章节</value>
+  </data>
+  <data name="tsCategories.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIISURBVDhPpZP7S1NxGMbPPxKaXVUkMEq8IpKUCoY/hGgI
@@ -321,16 +327,16 @@
         KlSA8/zRh9ABIDUG+1JpAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="toolStripButton2.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="tsCategories.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="toolStripButton2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsCategories.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 22</value>
   </data>
-  <data name="toolStripButton2.Text" xml:space="preserve">
+  <data name="tsCategories.Text" xml:space="preserve">
     <value>目录章节</value>
   </data>
-  <data name="toolStripDropDownButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="tsBooks.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIISURBVDhPpZP7S1NxGMbPPxKaXVUkMEq8IpKUCoY/hGgI
@@ -345,13 +351,13 @@
         KlSA8/zRh9ABIDUG+1JpAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="toolStripDropDownButton2.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="tsBooks.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="toolStripDropDownButton2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsBooks.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 22</value>
   </data>
-  <data name="toolStripDropDownButton2.Text" xml:space="preserve">
+  <data name="tsBooks.Text" xml:space="preserve">
     <value>书库</value>
   </data>
   <data name="夜间模式ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
@@ -366,7 +372,7 @@
   <data name="普通模式ToolStripMenuItem.Text" xml:space="preserve">
     <value>普通模式</value>
   </data>
-  <data name="toolStripDropDownButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="tsSkins.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIISURBVDhPpZP7S1NxGMbPPxKaXVUkMEq8IpKUCoY/hGgI
@@ -381,20 +387,20 @@
         KlSA8/zRh9ABIDUG+1JpAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="toolStripDropDownButton1.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="tsSkins.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="toolStripDropDownButton1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsSkins.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 22</value>
   </data>
-  <data name="toolStripDropDownButton1.Text" xml:space="preserve">
+  <data name="tsSkins.Text" xml:space="preserve">
     <value>皮肤</value>
   </data>
   <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 0</value>
   </data>
   <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>262, 25</value>
+    <value>231, 25</value>
   </data>
   <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -435,12 +441,6 @@
   <data name="&gt;&gt;toolStripContainer1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="clickToSeeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 22</value>
-  </data>
-  <data name="clickToSeeToolStripMenuItem.Text" xml:space="preserve">
-    <value>点击查看章节</value>
-  </data>
   <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>127, 17</value>
   </metadata>
@@ -456,28 +456,34 @@
   <data name="$this.Text" xml:space="preserve">
     <value>我的小说阅读器</value>
   </data>
-  <data name="&gt;&gt;toolStripButton1.Name" xml:space="preserve">
-    <value>toolStripButton1</value>
+  <data name="&gt;&gt;tsFile.Name" xml:space="preserve">
+    <value>tsFile</value>
   </data>
-  <data name="&gt;&gt;toolStripButton1.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripButton2.Name" xml:space="preserve">
-    <value>toolStripButton2</value>
+  <data name="&gt;&gt;tsCategories.Name" xml:space="preserve">
+    <value>tsCategories</value>
   </data>
-  <data name="&gt;&gt;toolStripButton2.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsCategories.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;clickToSeeToolStripMenuItem.Name" xml:space="preserve">
-    <value>clickToSeeToolStripMenuItem</value>
+  <data name="&gt;&gt;tsmiListCategories.Name" xml:space="preserve">
+    <value>tsmiListCategories</value>
   </data>
-  <data name="&gt;&gt;clickToSeeToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmiListCategories.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripDropDownButton1.Name" xml:space="preserve">
-    <value>toolStripDropDownButton1</value>
+  <data name="&gt;&gt;tsBooks.Name" xml:space="preserve">
+    <value>tsBooks</value>
   </data>
-  <data name="&gt;&gt;toolStripDropDownButton1.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsBooks.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsSkins.Name" xml:space="preserve">
+    <value>tsSkins</value>
+  </data>
+  <data name="&gt;&gt;tsSkins.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;夜间模式ToolStripMenuItem.Name" xml:space="preserve">
@@ -497,12 +503,6 @@
   </data>
   <data name="&gt;&gt;openFileDialog1.Type" xml:space="preserve">
     <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripDropDownButton2.Name" xml:space="preserve">
-    <value>toolStripDropDownButton2</value>
-  </data>
-  <data name="&gt;&gt;toolStripDropDownButton2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>TextReader</value>

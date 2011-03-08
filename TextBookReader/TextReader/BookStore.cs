@@ -5,11 +5,9 @@ using System.Windows.Forms;
 
 namespace TextReader
 {
-    public class BookStore
+     [Serializable]
+    public class BookStore : List<TextBook>
     {
-        public List<TextBook> Books = new List<TextBook>();
-
-
 
     }
 }
