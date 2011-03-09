@@ -31,13 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TextReader));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.pContent = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnNextCatalog = new System.Windows.Forms.Button();
+            this.btnPrevCatalog = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsFile = new System.Windows.Forms.ToolStripButton();
             this.tsCategories = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tsmiListCategories = new System.Windows.Forms.ToolStripMenuItem();
             this.tsBooks = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsSkins = new System.Windows.Forms.ToolStripDropDownButton();
             this.夜间模式ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,8 +54,8 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.pContent);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.button2);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.button1);
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.btnNextCatalog);
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.btnPrevCatalog);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.listView1);
             resources.ApplyResources(this.toolStripContainer1.ContentPanel, "toolStripContainer1.ContentPanel");
             resources.ApplyResources(this.toolStripContainer1, "toolStripContainer1");
@@ -70,21 +69,21 @@
             // 
             resources.ApplyResources(this.pContent, "pContent");
             this.pContent.Name = "pContent";
-            this.pContent.Resize += new System.EventHandler(this.panel1_Resize);
+            this.pContent.Resize += new System.EventHandler(this.pContent_Resize);
             // 
-            // button2
+            // btnNextCatalog
             // 
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.Name = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            resources.ApplyResources(this.btnNextCatalog, "btnNextCatalog");
+            this.btnNextCatalog.Name = "btnNextCatalog";
+            this.btnNextCatalog.UseVisualStyleBackColor = true;
+            this.btnNextCatalog.Click += new System.EventHandler(this.btnNextCatalog_Click);
             // 
-            // button1
+            // btnPrevCatalog
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            resources.ApplyResources(this.btnPrevCatalog, "btnPrevCatalog");
+            this.btnPrevCatalog.Name = "btnPrevCatalog";
+            this.btnPrevCatalog.UseVisualStyleBackColor = true;
+            this.btnPrevCatalog.Click += new System.EventHandler(this.btnPrevCatalog_Click);
             // 
             // listView1
             // 
@@ -108,21 +107,13 @@
             this.tsFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             resources.ApplyResources(this.tsFile, "tsFile");
             this.tsFile.Name = "tsFile";
-            this.tsFile.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.tsFile.Click += new System.EventHandler(this.tsOpen_Click);
             // 
             // tsCategories
             // 
             this.tsCategories.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsCategories.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiListCategories});
             resources.ApplyResources(this.tsCategories, "tsCategories");
             this.tsCategories.Name = "tsCategories";
-            // 
-            // tsmiListCategories
-            // 
-            this.tsmiListCategories.Name = "tsmiListCategories";
-            resources.ApplyResources(this.tsmiListCategories, "tsmiListCategories");
-            this.tsmiListCategories.Click += new System.EventHandler(this.clickToSeeToolStripMenuItem_Click);
             // 
             // tsBooks
             // 
@@ -143,13 +134,13 @@
             // 
             this.夜间模式ToolStripMenuItem.Name = "夜间模式ToolStripMenuItem";
             resources.ApplyResources(this.夜间模式ToolStripMenuItem, "夜间模式ToolStripMenuItem");
-            this.夜间模式ToolStripMenuItem.Click += new System.EventHandler(this.夜间模式ToolStripMenuItem_Click);
+            this.夜间模式ToolStripMenuItem.Click += new System.EventHandler(this.tsmiNightStyle_Click);
             // 
             // 普通模式ToolStripMenuItem
             // 
             this.普通模式ToolStripMenuItem.Name = "普通模式ToolStripMenuItem";
             resources.ApplyResources(this.普通模式ToolStripMenuItem, "普通模式ToolStripMenuItem");
-            this.普通模式ToolStripMenuItem.Click += new System.EventHandler(this.普通模式ToolStripMenuItem_Click);
+            this.普通模式ToolStripMenuItem.Click += new System.EventHandler(this.tsmiNormal_Click);
             // 
             // openFileDialog1
             // 
@@ -184,10 +175,9 @@
         private System.Windows.Forms.ToolStripMenuItem 夜间模式ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 普通模式ToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.ToolStripMenuItem tsmiListCategories;
         private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnNextCatalog;
+        private System.Windows.Forms.Button btnPrevCatalog;
         private System.Windows.Forms.Panel pContent;
         private System.Windows.Forms.ToolStripDropDownButton tsBooks;
     }

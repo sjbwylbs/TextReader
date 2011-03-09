@@ -12,16 +12,11 @@ namespace TextReader
             Size = 1;
         }
 
-        //章节文件名
-
-        public string FileName { get; set; }
 
         //章节数
-
         public int Size { get; set; }
 
         //章节
-
         public SortedList<int, CatalogPuple> CatalogList { get; set; }
     }
 }

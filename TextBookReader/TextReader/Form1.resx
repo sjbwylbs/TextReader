@@ -152,52 +152,46 @@
   <data name="&gt;&gt;pContent.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>592, 521</value>
+  <data name="btnNextCatalog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnNextCatalog.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <data name="button2.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="btnNextCatalog.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
-  <data name="button2.Text" xml:space="preserve">
-    <value>下一页</value>
+  <data name="&gt;&gt;btnNextCatalog.Name" xml:space="preserve">
+    <value>btnNextCatalog</value>
   </data>
-  <data name="&gt;&gt;button2.Name" xml:space="preserve">
-    <value>button2</value>
-  </data>
-  <data name="&gt;&gt;button2.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnNextCatalog.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnNextCatalog.Parent" xml:space="preserve">
     <value>toolStripContainer1.ContentPanel</value>
   </data>
-  <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnNextCatalog.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>411, 521</value>
+  <data name="btnPrevCatalog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnPrevCatalog.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <data name="button1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="btnPrevCatalog.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>上一页</value>
+  <data name="&gt;&gt;btnPrevCatalog.Name" xml:space="preserve">
+    <value>btnPrevCatalog</value>
   </data>
-  <data name="&gt;&gt;button1.Name" xml:space="preserve">
-    <value>button1</value>
-  </data>
-  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnPrevCatalog.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnPrevCatalog.Parent" xml:space="preserve">
     <value>toolStripContainer1.ContentPanel</value>
   </data>
-  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnPrevCatalog.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="listView1.Location" type="System.Drawing.Point, System.Drawing">
@@ -306,12 +300,6 @@
   <data name="tsFile.Text" xml:space="preserve">
     <value>打开小说</value>
   </data>
-  <data name="tsmiListCategories.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="tsmiListCategories.Text" xml:space="preserve">
-    <value>点击查看章节</value>
-  </data>
   <data name="tsCategories.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -400,7 +388,7 @@
     <value>3, 0</value>
   </data>
   <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>231, 25</value>
+    <value>262, 25</value>
   </data>
   <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -467,12 +455,6 @@
   </data>
   <data name="&gt;&gt;tsCategories.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tsmiListCategories.Name" xml:space="preserve">
-    <value>tsmiListCategories</value>
-  </data>
-  <data name="&gt;&gt;tsmiListCategories.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsBooks.Name" xml:space="preserve">
     <value>tsBooks</value>

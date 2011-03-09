@@ -26,7 +26,7 @@ namespace TextReader
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void tsOpen_Click(object sender, EventArgs e)
         {
             //打开对话框
             DialogResult dr=openFileDialog1.ShowDialog();
@@ -34,73 +34,50 @@ namespace TextReader
             {
                 FileInfo fi = new FileInfo(openFileDialog1.FileName);
 
-                tb = TextBook.NewTextBook(fi.FullName);
+                tb = TextBook.NewTextBook(fi.FullName, cacheDir);
               
                 //查找是否有缓存的章节目录
-                if (File.Exists(CacheFile()))
+                if (File.Exists(tb.CatalogsFileName))
                 {
                     //如果存在则导入
-                    ImportCatalog();
+                    tb=TextBook.Restore(tb.CatalogsFileName);
                 }
                 else
                 {
                     //如果不存在则生成目录章节
-                    GenCatalog();
+                    TextBook.NewCatalog(ref tb);
+                    TextBook.Save(tb);
                 }
 
                 //显示书名和作者
                 this.Text = string.Format("文本小说阅读器 {0}-{1}", tb.BookName, tb.Author);
-                foreach (ToolStripItem i in tsCategories.DropDownItems)
-                {
-                    //清除已有的列表
-                    if (i.Name.Equals(this.toolStrip1.Name))
-                        tsCategories.DropDownItems.Remove(i);
-                }
+                
 
+                bs.Add(tb);
+                ToolStripMenuItem item = new ToolStripMenuItem(tb.BookName);
+                item.Click += new EventHandler(books_Click);
+                this.tsBooks.DropDownItems.Add(item);
 
-                new Thread(new ThreadStart(ShowCatalog)).Start();
+                GenCategoriesMenu();
             }
         }
 
-        private string CacheFile()
+        private void GenCategoriesMenu()
         {
-            string cacheFile = Path.Combine(cacheDir, tb.FileName + ".~");
-            return cacheFile;
+            tsCategories.DropDownItems.Clear();
+            //生成章节目录列表
+            new Thread(new ThreadStart(ShowCatalog)).Start();
         }
 
-        private void GenCatalog()
-        {
-            Catalog catalog = new Catalog();
-            catalog.FileName = CacheFile();
-            NewCatalog(catalog);
-            tb.Catalogs = catalog;
-            BinaryFormatter bw = new BinaryFormatter();
-            Stream sw = File.Create(catalog.FileName);
-            bw.Serialize(sw, tb);
-            sw.Close();
-        }
-
-        private void ImportCatalog(string cachefile)
-        {
-            Stream sr = File.OpenRead(cachefile);
-            BinaryFormatter bf = new BinaryFormatter();
-            tb = (TextBook)bf.Deserialize(sr);
-            sr.Close();
-        }
-
-        private void ImportCatalog()
-        {
-            ImportCatalog(CacheFile());
-        }
 
         private void ShowCatalog()
         {
             foreach (var item in tb.Catalogs.CatalogList)
             {
-                ToolStripMenuItem tsmi = new ToolStripMenuItem(item.Value.Name);
-                tsmi.Name = string.Format("catalog{0}", item.Key);
-                tsmi.Click += new EventHandler(tsmi_Click);
-                AddCatalog(tsmi);
+                ToolStripMenuItem tsmiCatalogItem = new ToolStripMenuItem(item.Value.Name);
+                tsmiCatalogItem.Name = string.Format("catalog{0}", item.Key);
+                tsmiCatalogItem.Click += new EventHandler(tsmiCatalogItem_Click);
+                AddCatalog(tsmiCatalogItem);
             }
         }
 
@@ -119,103 +96,9 @@ namespace TextReader
             }
         }
 
-        private void NewCatalog(Catalog catalog)
-        {
-            //以文本方式打开小说
-            BufferedStream bs=new BufferedStream(File.OpenRead(tb.FullName));
-            StreamReader sr = new StreamReader(bs,Encoding.Default);
-            long position = 0;
-            string buffer;
-            Regex re = new Regex("书名:\\w{1,50}", RegexOptions.IgnorePatternWhitespace);
-
-            while (string.IsNullOrEmpty(tb.BookName))
-            {
-                buffer = sr.ReadLine();
-                tb.Lines++;
-                if (!string.IsNullOrEmpty(buffer))
-                {
-                    position += buffer.Length;
-                    Match m = re.Match(buffer);
-                    if (m.Success)
-                    {
-                        tb.BookName = m.Value;
-                        break;
-                    }
-                }
-            }
 
 
-            re = new Regex("作者:\\w{1,50}", RegexOptions.IgnorePatternWhitespace);
-
-            while (string.IsNullOrEmpty(tb.Author))
-            {
-                buffer = sr.ReadLine();
-                tb.Lines++;
-                if (!string.IsNullOrEmpty(buffer))
-                {
-                    position += buffer.Length;
-                    Match m = re.Match(buffer);
-                    if (m.Success)
-                    {
-                        tb.Author = m.Value;
-                        break;
-                    }
-
-                }
-            }
-
-
-            re = new Regex(@"第(一|二|三|四|五|六|七|八|九|十|零|百|千|万|\d){1,50}章.+\s", RegexOptions.IgnorePatternWhitespace);
-
-            CatalogPuple cp = null;
-            StringBuilder sb = new StringBuilder();
-            while (!sr.EndOfStream)
-            {
-                buffer = sr.ReadLine();
-                tb.Lines++;
-                if (!string.IsNullOrEmpty(buffer))
-                {
-                    position += buffer.Length;
-                
-                    Match m=re.Match(buffer);
-                    //判断章节
-                    if (m.Success)
-                    {
-                        position += Environment.NewLine.Length;
-
-                        if (cp != null)
-                        {
-
-                            //是章节保存内容
-                            cp.Content = sb.ToString();
-                            sb.Remove(0, sb.Length);
-                        }
-
-                        cp = new CatalogPuple();
-                        cp.Position = position;
-                        cp.Name = m.Value;
-                        cp.Begin = tb.Lines;
-                        if (catalog.Size > 1)
-                        {
-                            catalog.CatalogList[catalog.Size - 1].End = cp.Begin - 1;
-                        }
-                        catalog.CatalogList.Add(catalog.Size++, cp);
-                    }
-                    else
-                    {
-                        if (cp != null)
-                        {
-                            //不是章节则是内容
-                            sb.AppendLine(buffer);
-                        }
-                    }
-                }
-                
-            }
-            sr.Close();
-        }
-
-        void tsmi_Click(object sender, EventArgs e)
+        void tsmiCatalogItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem tsmi = sender as ToolStripMenuItem;
             Regex re = new Regex("\\d+");
@@ -243,11 +126,12 @@ namespace TextReader
             }
 
             
-            string[] files = Directory.GetFiles(cacheDir, "*.txt.~");
-            foreach(string s in files)
+            string[] cacheFiles = Directory.GetFiles(cacheDir, "*.txt.~");
+            foreach(string cacheFile in cacheFiles)
             {
-                TextBook t = TextBook.NewTextBook(s);
+                TextBook t=TextBook.Restore(cacheFile);
                 bs.Add(t);
+
                 ToolStripMenuItem item = new ToolStripMenuItem(t.BookName);
                 item.Click += new EventHandler(books_Click);
                 this.tsBooks.DropDownItems.Add(item);
@@ -268,12 +152,13 @@ namespace TextReader
         {
             ToolStripMenuItem tsmi = sender as ToolStripMenuItem;
             tb = bs.Find(b => b.BookName.Equals(tsmi.Text));
-            ImportCatalog();
+            GenCategoriesMenu();
+            //tb=TextBook.Restore(tb.CatalogsFileName);
         }
 
         private void clickToSeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GenCatalog();
+            throw new NotImplementedException("还没有做这个功能哦");
         }
 
         private void TextReader_Resize(object sender, EventArgs e)
@@ -282,13 +167,13 @@ namespace TextReader
             s.Height -= 80;
             this.pContent.Size = s;
 
-            this.button1.Location=new Point(this.button1.Location.X,s.Height + 5);
-            this.button2.Location = new Point(this.button2.Location.X, s.Height + 5);
+            this.btnPrevCatalog.Location=new Point(this.btnPrevCatalog.Location.X,s.Height + 5);
+            this.btnNextCatalog.Location = new Point(this.btnNextCatalog.Location.X, s.Height + 5);
 
 
         }
 
-        private void panel1_Resize(object sender, EventArgs e)
+        private void pContent_Resize(object sender, EventArgs e)
         {
             
             Panel p = sender as Panel;
@@ -299,30 +184,34 @@ namespace TextReader
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnPrevCatalog_Click(object sender, EventArgs e)
         {
-            tb.CurrentCatalog--;
-            CatalogPuple puple = tb.Catalogs.CatalogList[tb.CurrentCatalog];
-
-            this.pContent.Controls[0].Text = puple.Content;
+            if (tb.CurrentCatalog > 0)
+            {
+                tb.CurrentCatalog--;
+                CatalogPuple puple = tb.Catalogs.CatalogList[tb.CurrentCatalog];
+                this.pContent.Controls[0].Text = puple.Content;
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnNextCatalog_Click(object sender, EventArgs e)
         {
-            tb.CurrentCatalog++;
-            CatalogPuple puple = tb.Catalogs.CatalogList[tb.CurrentCatalog];
-
-            this.pContent.Controls[0].Text = puple.Content;
+            if (tb.CurrentCatalog + 1 < tb.Catalogs.Size)
+            {
+                tb.CurrentCatalog++;
+                CatalogPuple puple = tb.Catalogs.CatalogList[tb.CurrentCatalog];
+                this.pContent.Controls[0].Text = puple.Content;
+            }
         }
 
-        private void 夜间模式ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tsmiNightStyle_Click(object sender, EventArgs e)
         {
             TRTextBox content = (TRTextBox)this.pContent.Controls["content"];
             content.BackColor = Color.Black;
             content.ForeColor = Color.White;
         }
 
-        private void 普通模式ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tsmiNormal_Click(object sender, EventArgs e)
         {
             TRTextBox content = (TRTextBox)this.pContent.Controls["content"];
             content.BackColor = Color.White;
