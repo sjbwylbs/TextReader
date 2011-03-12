@@ -19,7 +19,7 @@ namespace TextReader
             FileName = fi.Name;
             CatalogsFileName = Path.Combine(cacheDir, FileName + ".~");
             Lenght = fi.Length;
-            Current = 0;
+            Position = 0;
             LastAccessTime = fi.LastAccessTime;
             Desc = "";
         }
@@ -31,7 +31,7 @@ namespace TextReader
 
         public static void NewCatalog(ref TextBook tb)
         {
-            Catalog catalog = new Catalog();
+            Catalogs catalogs = new Catalogs();
             //以文本方式打开小说
             BufferedStream bs=new BufferedStream(File.OpenRead(tb.FullName));
             StreamReader sr = new StreamReader(bs,Encoding.Default);
@@ -104,11 +104,11 @@ namespace TextReader
                         cp.Position = position;
                         cp.Name = m.Value;
                         cp.Begin = tb.Lines;
-                        if (catalog.Size > 1)
+                        if (catalogs.Count > 1)
                         {
-                            catalog.CatalogList[catalog.Size - 1].End = cp.Begin - 1;
+                            catalogs[catalogs.Count - 1].End = cp.Begin - 1;
                         }
-                        catalog.CatalogList.Add(catalog.Size++, cp);
+                        catalogs.Add(cp);
                     }
                     else
                     {
@@ -122,7 +122,7 @@ namespace TextReader
                 
             }
             sr.Close();
-            tb.Catalogs = catalog;
+            tb.Catalogs = catalogs;
         }
 
         public static void Save(TextBook tb)
@@ -172,17 +172,17 @@ namespace TextReader
 
         //当前阅读位置
 
-        public long Current { get; set; }
+        public long Position { get; set; }
 
         //当前阅读章节
-
+        
         public int CurrentCatalog { get; set; }
 
         //章节目录文件
         public string CatalogsFileName { get; set; }
 
         //章节目录
-        public Catalog Catalogs { get; set; }
+        public Catalogs Catalogs { get; set; }
 
         //行数
 

@@ -25,7 +25,7 @@ namespace TextReader.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("catalog")]
+        [global::System.Configuration.DefaultSettingValueAttribute("catalogs")]
         public string CachePath {
             get {
                 return ((string)(this["CachePath"]));

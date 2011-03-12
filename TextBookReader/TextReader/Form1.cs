@@ -12,6 +12,13 @@ namespace TextReader
 {
     public partial class TextReader : Form
     {
+        delegate void AddCatalogItem(ToolStripMenuItem tsmi);
+        private Thread redrawMenu;
+
+        private static string APPLICATION_CAPTION = "{0}{1}{2}文本小说阅读器 By sjbwylbs Email:sjbwylbs@163.com";
+        private static int PREV_LEFT=0;
+        private static int NEXT_LEFT = 0;
+        private static int DELIMITER=10;
         private TRTextBox content;
         BookStore bs = new BookStore();
         TextBook tb;
@@ -50,12 +57,12 @@ namespace TextReader
                 }
 
                 //显示书名和作者
-                this.Text = string.Format("文本小说阅读器 {0}-{1}", tb.BookName, tb.Author);
+                this.Text = string.Format(APPLICATION_CAPTION, tb.Author,"-"+tb.BookName,"        ");
                 
 
                 bs.Add(tb);
                 ToolStripMenuItem item = new ToolStripMenuItem(tb.BookName);
-                item.Click += new EventHandler(books_Click);
+                item.Click += new EventHandler(Books_Click);
                 this.tsBooks.DropDownItems.Add(item);
 
                 GenCategoriesMenu();
@@ -64,24 +71,31 @@ namespace TextReader
 
         private void GenCategoriesMenu()
         {
+            if (redrawMenu!=null && redrawMenu.IsAlive)
+            {
+                redrawMenu.Abort("用户重复调用重画章节菜单");
+            }
+          
             tsCategories.DropDownItems.Clear();
             //生成章节目录列表
-            new Thread(new ThreadStart(ShowCatalog)).Start();
+            redrawMenu=new Thread(new ThreadStart(ShowCatalog));
+            redrawMenu.Start();
+
         }
 
 
         private void ShowCatalog()
         {
-            foreach (var item in tb.Catalogs.CatalogList)
+            for (int i = 0; i < tb.Catalogs.Count; i++)
             {
-                ToolStripMenuItem tsmiCatalogItem = new ToolStripMenuItem(item.Value.Name);
-                tsmiCatalogItem.Name = string.Format("catalog{0}", item.Key);
+                CatalogPuple cp = tb.Catalogs[i];
+                ToolStripMenuItem tsmiCatalogItem = new ToolStripMenuItem(cp.Name);
+                tsmiCatalogItem.Name = string.Format("catalogs{0}",i);
                 tsmiCatalogItem.Click += new EventHandler(tsmiCatalogItem_Click);
                 AddCatalog(tsmiCatalogItem);
             }
         }
 
-        delegate void AddCatalogItem(ToolStripMenuItem tsmi);
 
         private void AddCatalog(ToolStripMenuItem tsmi)
         {
@@ -107,14 +121,16 @@ namespace TextReader
             int position = int.Parse(m.Value);
             tb.CurrentCatalog = position;
 
-            CatalogPuple puple = tb.Catalogs.CatalogList[tb.CurrentCatalog];
+            CatalogPuple puple = tb.Catalogs[tb.CurrentCatalog];
 
             this.pContent.Controls[0].Text = puple.Content;
+            this.Text = string.Format(APPLICATION_CAPTION, this.tb.Author, "-"+this.tb.BookName,"~"+puple.Name+"        ");
         }
 
         
         private void TextReader_Load(object sender, EventArgs e)
         {
+            this.Text = this.Text = string.Format(APPLICATION_CAPTION,"","","");
             Image bgimage=Image.FromFile(@"skins\black.gif");
             this.pContent.BackgroundImage = bgimage;
             this.pContent.BackgroundImageLayout = ImageLayout.Tile;
@@ -133,7 +149,7 @@ namespace TextReader
                 bs.Add(t);
 
                 ToolStripMenuItem item = new ToolStripMenuItem(t.BookName);
-                item.Click += new EventHandler(books_Click);
+                item.Click += new EventHandler(Books_Click);
                 this.tsBooks.DropDownItems.Add(item);
             }
 
@@ -146,19 +162,23 @@ namespace TextReader
             content.Multiline = true;
             content.Font = new Font("微软雅黑", 20);
             this.pContent.Controls.Add(content);
+
+            PREV_LEFT = this.Width / 2 - 80;
+            NEXT_LEFT = PREV_LEFT + 160;
+
+            this.btnPrevCatalog.Location = new Point(this.btnPrevCatalog.Location.X + PREV_LEFT, this.pContent.Height + DELIMITER);
+            this.btnNextCatalog.Location = new Point(this.btnNextCatalog.Location.X + NEXT_LEFT, this.pContent.Height + DELIMITER);
         }
 
-        void books_Click(object sender, EventArgs e)
+        void Books_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem tsmi = sender as ToolStripMenuItem;
             tb = bs.Find(b => b.BookName.Equals(tsmi.Text));
             GenCategoriesMenu();
-            //tb=TextBook.Restore(tb.CatalogsFileName);
-        }
-
-        private void clickToSeeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException("还没有做这个功能哦");
+            this.Text = string.Format(APPLICATION_CAPTION, this.tb.Author, "-"+this.tb.BookName, "        ");
+            TRTextBox content = (TRTextBox)this.pContent.Controls["content"];
+            content.Text = "";
+            
         }
 
         private void TextReader_Resize(object sender, EventArgs e)
@@ -167,8 +187,8 @@ namespace TextReader
             s.Height -= 80;
             this.pContent.Size = s;
 
-            this.btnPrevCatalog.Location=new Point(this.btnPrevCatalog.Location.X,s.Height + 5);
-            this.btnNextCatalog.Location = new Point(this.btnNextCatalog.Location.X, s.Height + 5);
+            this.btnPrevCatalog.Location = new Point(this.btnPrevCatalog.Location.X + PREV_LEFT, this.pContent.Height + DELIMITER);
+            this.btnNextCatalog.Location = new Point(this.btnNextCatalog.Location.X + NEXT_LEFT, this.pContent.Height + DELIMITER);
 
 
         }
@@ -189,17 +209,17 @@ namespace TextReader
             if (tb.CurrentCatalog > 0)
             {
                 tb.CurrentCatalog--;
-                CatalogPuple puple = tb.Catalogs.CatalogList[tb.CurrentCatalog];
+                CatalogPuple puple = tb.Catalogs[tb.CurrentCatalog];
                 this.pContent.Controls[0].Text = puple.Content;
             }
         }
 
         private void btnNextCatalog_Click(object sender, EventArgs e)
         {
-            if (tb.CurrentCatalog + 1 < tb.Catalogs.Size)
+            if (tb.CurrentCatalog + 1 < tb.Catalogs.Count)
             {
                 tb.CurrentCatalog++;
-                CatalogPuple puple = tb.Catalogs.CatalogList[tb.CurrentCatalog];
+                CatalogPuple puple = tb.Catalogs[tb.CurrentCatalog];
                 this.pContent.Controls[0].Text = puple.Content;
             }
         }
@@ -216,6 +236,14 @@ namespace TextReader
             TRTextBox content = (TRTextBox)this.pContent.Controls["content"];
             content.BackColor = Color.White;
             content.ForeColor = Color.Black;
+        }
+
+        private void TextReader_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (redrawMenu != null && redrawMenu.IsAlive)
+            {
+                redrawMenu.Abort("用户强制关闭窗口");
+            }
         }
     }
 }

@@ -39,8 +39,8 @@
             this.tsCategories = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsBooks = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsSkins = new System.Windows.Forms.ToolStripDropDownButton();
-            this.夜间模式ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.普通模式ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNightStyle = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNomalStyle = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -125,22 +125,22 @@
             // 
             this.tsSkins.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tsSkins.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.夜间模式ToolStripMenuItem,
-            this.普通模式ToolStripMenuItem});
+            this.tsmiNightStyle,
+            this.tsmiNomalStyle});
             resources.ApplyResources(this.tsSkins, "tsSkins");
             this.tsSkins.Name = "tsSkins";
             // 
-            // 夜间模式ToolStripMenuItem
+            // tsmiNightStyle
             // 
-            this.夜间模式ToolStripMenuItem.Name = "夜间模式ToolStripMenuItem";
-            resources.ApplyResources(this.夜间模式ToolStripMenuItem, "夜间模式ToolStripMenuItem");
-            this.夜间模式ToolStripMenuItem.Click += new System.EventHandler(this.tsmiNightStyle_Click);
+            this.tsmiNightStyle.Name = "tsmiNightStyle";
+            resources.ApplyResources(this.tsmiNightStyle, "tsmiNightStyle");
+            this.tsmiNightStyle.Click += new System.EventHandler(this.tsmiNightStyle_Click);
             // 
-            // 普通模式ToolStripMenuItem
+            // tsmiNomalStyle
             // 
-            this.普通模式ToolStripMenuItem.Name = "普通模式ToolStripMenuItem";
-            resources.ApplyResources(this.普通模式ToolStripMenuItem, "普通模式ToolStripMenuItem");
-            this.普通模式ToolStripMenuItem.Click += new System.EventHandler(this.tsmiNormal_Click);
+            this.tsmiNomalStyle.Name = "tsmiNomalStyle";
+            resources.ApplyResources(this.tsmiNomalStyle, "tsmiNomalStyle");
+            this.tsmiNomalStyle.Click += new System.EventHandler(this.tsmiNormal_Click);
             // 
             // openFileDialog1
             // 
@@ -152,6 +152,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.toolStripContainer1);
             this.Name = "TextReader";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TextReader_FormClosing);
             this.Load += new System.EventHandler(this.TextReader_Load);
             this.Resize += new System.EventHandler(this.TextReader_Resize);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
@@ -172,8 +173,8 @@
         private System.Windows.Forms.ToolStripButton tsFile;
         private System.Windows.Forms.ToolStripDropDownButton tsCategories;
         private System.Windows.Forms.ToolStripDropDownButton tsSkins;
-        private System.Windows.Forms.ToolStripMenuItem 夜间模式ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 普通模式ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiNightStyle;
+        private System.Windows.Forms.ToolStripMenuItem tsmiNomalStyle;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button btnNextCatalog;
