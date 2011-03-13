@@ -16,9 +16,6 @@ namespace TextReader
         private Thread redrawMenu;
 
         private static string APPLICATION_CAPTION = "{0}{1}{2}文本小说阅读器 By sjbwylbs Email:sjbwylbs@163.com";
-        private static int PREV_LEFT=0;
-        private static int NEXT_LEFT = 0;
-        private static int DELIMITER=10;
         private TRTextBox content;
         BookStore bs = new BookStore();
         TextBook tb;
@@ -163,11 +160,20 @@ namespace TextReader
             content.Font = new Font("微软雅黑", 20);
             this.pContent.Controls.Add(content);
 
-            PREV_LEFT = this.Width / 2 - 80;
-            NEXT_LEFT = PREV_LEFT + 160;
+            ResetControl();
+        }
 
-            this.btnPrevCatalog.Location = new Point(this.btnPrevCatalog.Location.X + PREV_LEFT, this.pContent.Height + DELIMITER);
-            this.btnNextCatalog.Location = new Point(this.btnNextCatalog.Location.X + NEXT_LEFT, this.pContent.Height + DELIMITER);
+        private void ResetControl()
+        {
+            Size s = this.ClientSize;
+            //s.Height -= 80;
+            this.pContent.Size = s;
+
+            int x = s.Width/2-this.pControl.Width/2;
+            int y = s.Height-this.pControl.Height;
+
+            this.pControl.Location = new Point(x);
+            this.pControl.Location = new Point(y);
         }
 
         void Books_Click(object sender, EventArgs e)
@@ -183,14 +189,7 @@ namespace TextReader
 
         private void TextReader_Resize(object sender, EventArgs e)
         {
-            Size s = this.ClientSize;
-            s.Height -= 80;
-            this.pContent.Size = s;
-
-            this.btnPrevCatalog.Location = new Point(this.btnPrevCatalog.Location.X + PREV_LEFT, this.pContent.Height + DELIMITER);
-            this.btnNextCatalog.Location = new Point(this.btnNextCatalog.Location.X + NEXT_LEFT, this.pContent.Height + DELIMITER);
-
-
+            ResetControl();
         }
 
         private void pContent_Resize(object sender, EventArgs e)

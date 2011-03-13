@@ -129,14 +129,144 @@
   <data name="&gt;&gt;toolStripContainer1.BottomToolStripPanel.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pContent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnNextPage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="pContent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1067, 512</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnNextPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>195, 17</value>
+  </data>
+  <data name="btnNextPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 40</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnNextPage.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="btnNextPage.Text" xml:space="preserve">
+    <value>&gt;&gt;</value>
+  </data>
+  <data name="&gt;&gt;btnNextPage.Name" xml:space="preserve">
+    <value>btnNextPage</value>
+  </data>
+  <data name="&gt;&gt;btnNextPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnNextPage.Parent" xml:space="preserve">
+    <value>pControl</value>
+  </data>
+  <data name="&gt;&gt;btnNextPage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnPrevPage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnPrevPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>102, 17</value>
+  </data>
+  <data name="btnPrevPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 40</value>
+  </data>
+  <data name="btnPrevPage.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="btnPrevPage.Text" xml:space="preserve">
+    <value>&lt;&lt;</value>
+  </data>
+  <data name="&gt;&gt;btnPrevPage.Name" xml:space="preserve">
+    <value>btnPrevPage</value>
+  </data>
+  <data name="&gt;&gt;btnPrevPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPrevPage.Parent" xml:space="preserve">
+    <value>pControl</value>
+  </data>
+  <data name="&gt;&gt;btnPrevPage.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnNextCatalog.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnNextCatalog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>288, 17</value>
+  </data>
+  <data name="btnNextCatalog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 40</value>
+  </data>
+  <data name="btnNextCatalog.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="btnNextCatalog.Text" xml:space="preserve">
+    <value>&gt;&gt;&gt;&gt;</value>
+  </data>
+  <data name="&gt;&gt;btnNextCatalog.Name" xml:space="preserve">
+    <value>btnNextCatalog</value>
+  </data>
+  <data name="&gt;&gt;btnNextCatalog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnNextCatalog.Parent" xml:space="preserve">
+    <value>pControl</value>
+  </data>
+  <data name="&gt;&gt;btnNextCatalog.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnPrevCatalog.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnPrevCatalog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 17</value>
+  </data>
+  <data name="btnPrevCatalog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 40</value>
+  </data>
+  <data name="btnPrevCatalog.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="btnPrevCatalog.Text" xml:space="preserve">
+    <value>&lt;&lt;&lt;&lt;</value>
+  </data>
+  <data name="&gt;&gt;btnPrevCatalog.Name" xml:space="preserve">
+    <value>btnPrevCatalog</value>
+  </data>
+  <data name="&gt;&gt;btnPrevCatalog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPrevCatalog.Parent" xml:space="preserve">
+    <value>pControl</value>
+  </data>
+  <data name="&gt;&gt;btnPrevCatalog.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="pControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>360, 374</value>
+  </data>
+  <data name="pControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>373, 76</value>
+  </data>
+  <data name="pControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;pControl.Name" xml:space="preserve">
+    <value>pControl</value>
+  </data>
+  <data name="&gt;&gt;pControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pControl.Parent" xml:space="preserve">
+    <value>pContent</value>
+  </data>
+  <data name="&gt;&gt;pControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="pContent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, -14</value>
+  </data>
+  <data name="pContent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1067, 501</value>
+  </data>
   <data name="pContent.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
@@ -152,59 +282,11 @@
   <data name="&gt;&gt;pContent.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="btnNextCatalog.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="btnNextCatalog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="btnNextCatalog.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="btnNextCatalog.Text" xml:space="preserve">
-    <value>&gt;&gt;&gt;&gt;</value>
-  </data>
-  <data name="&gt;&gt;btnNextCatalog.Name" xml:space="preserve">
-    <value>btnNextCatalog</value>
-  </data>
-  <data name="&gt;&gt;btnNextCatalog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnNextCatalog.Parent" xml:space="preserve">
-    <value>toolStripContainer1.ContentPanel</value>
-  </data>
-  <data name="&gt;&gt;btnNextCatalog.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnPrevCatalog.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="btnPrevCatalog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="btnPrevCatalog.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="btnPrevCatalog.Text" xml:space="preserve">
-    <value>&lt;&lt;&lt;&lt;</value>
-  </data>
-  <data name="&gt;&gt;btnPrevCatalog.Name" xml:space="preserve">
-    <value>btnPrevCatalog</value>
-  </data>
-  <data name="&gt;&gt;btnPrevCatalog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnPrevCatalog.Parent" xml:space="preserve">
-    <value>toolStripContainer1.ContentPanel</value>
-  </data>
-  <data name="&gt;&gt;btnPrevCatalog.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="listView1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>3, -14</value>
   </data>
   <data name="listView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1070, 512</value>
+    <value>1070, 570</value>
   </data>
   <data name="listView1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -219,7 +301,7 @@
     <value>toolStripContainer1.ContentPanel</value>
   </data>
   <data name="&gt;&gt;listView1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>1070, 556</value>
@@ -236,7 +318,6 @@
   <data name="&gt;&gt;toolStripContainer1.ContentPanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="toolStripContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -355,10 +436,10 @@
     <value>书库</value>
   </data>
   <data name="tsmiNightStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 22</value>
+    <value>124, 22</value>
   </data>
   <data name="tsmiNomalStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 22</value>
+    <value>124, 22</value>
   </data>
   <data name="tsSkins.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
