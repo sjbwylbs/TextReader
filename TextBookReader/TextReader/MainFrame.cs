@@ -165,15 +165,14 @@ namespace TextReader
 
         private void ResetControl()
         {
+
             Size s = this.ClientSize;
-            //s.Height -= 80;
             this.pContent.Size = s;
 
-            int x = s.Width/2-this.pControl.Width/2;
+            int x = (s.Width-this.pControl.Width)/2;
             int y = s.Height-this.pControl.Height;
 
-            this.pControl.Location = new Point(x);
-            this.pControl.Location = new Point(y);
+            this.pControl.Location = new Point(x,y);
         }
 
         void Books_Click(object sender, EventArgs e)
