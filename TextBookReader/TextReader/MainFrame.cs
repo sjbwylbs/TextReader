@@ -16,7 +16,6 @@ namespace TextReader
         private Thread redrawMenu;
 
         private static string APPLICATION_CAPTION = "{0}{1}{2}文本小说阅读器 By sjbwylbs Email:sjbwylbs@163.com";
-        private TRTextBox content;
         BookStore bs = new BookStore();
         TextBook tb;
         private string cacheDir;
@@ -120,7 +119,7 @@ namespace TextReader
 
             CatalogPuple puple = tb.Catalogs[tb.CurrentCatalog];
 
-            this.pContent.Controls[0].Text = puple.Content;
+            this.panelContent.Controls[0].Text = puple.Content;
             this.Text = string.Format(APPLICATION_CAPTION, this.tb.Author, "-"+this.tb.BookName,"~"+puple.Name+"        ");
         }
 
@@ -129,8 +128,8 @@ namespace TextReader
         {
             this.Text = this.Text = string.Format(APPLICATION_CAPTION,"","","");
             Image bgimage=Image.FromFile(@"skins\black.gif");
-            this.pContent.BackgroundImage = bgimage;
-            this.pContent.BackgroundImageLayout = ImageLayout.Tile;
+            this.panelContent.BackgroundImage = bgimage;
+            this.panelContent.BackgroundImageLayout = ImageLayout.Tile;
             cacheDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Settings.Default.CachePath);
 
             if (!Directory.Exists(cacheDir))
@@ -150,16 +149,20 @@ namespace TextReader
                 this.tsBooks.DropDownItems.Add(item);
             }
 
-            content = new TRTextBox();
-            content.Name = "content";
-            content.BackgroundImage = bgimage;
-            content.BackgroundImageLayout = ImageLayout.Tile;
-            content.Size = this.pContent.Size;
-            content.ScrollBars = ScrollBars.Vertical;
-            content.Multiline = true;
-            content.Font = new Font("微软雅黑", 20);
-            this.pContent.Controls.Add(content);
+            lbContent.BackgroundImage = bgimage;
+            lbContent.BackgroundImageLayout = ImageLayout.Tile;
+            //panelContent.Size = this.panelContent.Size;
+            lbContent.ScrollBars = ScrollBars.Vertical;
+            lbContent.Multiline = true;
+            //lbContent.Enabled = false;
+            lbContent.Font = new Font("微软雅黑", 20);
+           
 
+            //this.panelContent.Controls.Add(content);
+            this.panelContent.Location = new Point(0, 0);
+            this.lbContent.Location = this.lbContent.Parent.Location;
+            this.panelContent.Size = this.ClientSize;
+            this.pControl.Visible = false;
             ResetControl();
         }
 
@@ -167,8 +170,10 @@ namespace TextReader
         {
 
             Size s = this.ClientSize;
-            this.pContent.Size = s;
+            this.panelContent.Size = s;
+            this.lbContent.Size = s;
 
+            //设置控制器的位置
             int x = (s.Width-this.pControl.Width)/2;
             int y = s.Height-this.pControl.Height;
 
@@ -181,8 +186,7 @@ namespace TextReader
             tb = bs.Find(b => b.BookName.Equals(tsmi.Text));
             GenCategoriesMenu();
             this.Text = string.Format(APPLICATION_CAPTION, this.tb.Author, "-"+this.tb.BookName, "        ");
-            TRTextBox content = (TRTextBox)this.pContent.Controls["content"];
-            content.Text = "";
+            this.panelContent.ResetText();
             
         }
 
@@ -191,24 +195,16 @@ namespace TextReader
             ResetControl();
         }
 
-        private void pContent_Resize(object sender, EventArgs e)
-        {
-            
-            Panel p = sender as Panel;
-            if (p.HasChildren)
-            {
-                TRTextBox content = (TRTextBox)p.Controls["content"];
-                content.Size = p.Size;
-            }
-        }
-
         private void btnPrevCatalog_Click(object sender, EventArgs e)
         {
             if (tb.CurrentCatalog > 0)
             {
                 tb.CurrentCatalog--;
                 CatalogPuple puple = tb.Catalogs[tb.CurrentCatalog];
-                this.pContent.Controls[0].Text = puple.Content;
+                this.panelContent.Controls[0].Text = puple.Content;
+
+                this.Text = string.Format(APPLICATION_CAPTION, this.tb.Author, "-" + this.tb.BookName, "~" + puple.Name + "        ");
+
             }
         }
 
@@ -218,22 +214,25 @@ namespace TextReader
             {
                 tb.CurrentCatalog++;
                 CatalogPuple puple = tb.Catalogs[tb.CurrentCatalog];
-                this.pContent.Controls[0].Text = puple.Content;
+                this.panelContent.Controls[0].Text = puple.Content;
+
+                this.Text = string.Format(APPLICATION_CAPTION, this.tb.Author, "-" + this.tb.BookName, "~" + puple.Name + "        ");
+
             }
         }
 
         private void tsmiNightStyle_Click(object sender, EventArgs e)
         {
-            TRTextBox content = (TRTextBox)this.pContent.Controls["content"];
-            content.BackColor = Color.Black;
-            content.ForeColor = Color.White;
+            lbContent.BackColor = Color.Black;
+            lbContent.ForeColor = Color.White;
+        
         }
 
         private void tsmiNormal_Click(object sender, EventArgs e)
         {
-            TRTextBox content = (TRTextBox)this.pContent.Controls["content"];
-            content.BackColor = Color.White;
-            content.ForeColor = Color.Black;
+            lbContent.BackColor = Color.White;
+            lbContent.ForeColor = Color.Black;
+        
         }
 
         private void TextReader_FormClosing(object sender, FormClosingEventArgs e)
@@ -242,6 +241,33 @@ namespace TextReader
             {
                 redrawMenu.Abort("用户强制关闭窗口");
             }
+        }
+
+        private void toolStripContainer1_ContentPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Y > this.Height - pControl.Height && e.X > 0)
+            {
+                pControl.Visible = true;
+            }
+            else
+            {
+                pControl.Visible = false;
+            }
+      
+        }
+
+        private void lbContent_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Y > this.Height - pControl.Height && e.X > 0)
+            {
+                pControl.Visible = true;
+            }
+            else
+            {
+                pControl.Visible = false;
+            }
+      
+
         }
     }
 }

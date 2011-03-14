@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TextReader));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.pContent = new System.Windows.Forms.Panel();
             this.pControl = new System.Windows.Forms.Panel();
             this.btnNextPage = new System.Windows.Forms.Button();
             this.btnPrevPage = new System.Windows.Forms.Button();
             this.btnNextCatalog = new System.Windows.Forms.Button();
             this.btnPrevCatalog = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.panelContent = new System.Windows.Forms.Panel();
+            this.lbContent = new System.Windows.Forms.TextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsFile = new System.Windows.Forms.ToolStripButton();
             this.tsCategories = new System.Windows.Forms.ToolStripDropDownButton();
@@ -48,8 +48,8 @@
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
-            this.pContent.SuspendLayout();
             this.pControl.SuspendLayout();
+            this.panelContent.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,22 +58,16 @@
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.pContent);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.listView1);
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.pControl);
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.panelContent);
             resources.ApplyResources(this.toolStripContainer1.ContentPanel, "toolStripContainer1.ContentPanel");
+            this.toolStripContainer1.ContentPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.toolStripContainer1_ContentPanel_MouseMove);
             resources.ApplyResources(this.toolStripContainer1, "toolStripContainer1");
             this.toolStripContainer1.Name = "toolStripContainer1";
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
-            // 
-            // pContent
-            // 
-            this.pContent.Controls.Add(this.pControl);
-            resources.ApplyResources(this.pContent, "pContent");
-            this.pContent.Name = "pContent";
-            this.pContent.Resize += new System.EventHandler(this.pContent_Resize);
             // 
             // pControl
             // 
@@ -101,19 +95,26 @@
             resources.ApplyResources(this.btnNextCatalog, "btnNextCatalog");
             this.btnNextCatalog.Name = "btnNextCatalog";
             this.btnNextCatalog.UseVisualStyleBackColor = true;
+            this.btnNextCatalog.Click += new System.EventHandler(this.btnNextCatalog_Click);
             // 
             // btnPrevCatalog
             // 
             resources.ApplyResources(this.btnPrevCatalog, "btnPrevCatalog");
             this.btnPrevCatalog.Name = "btnPrevCatalog";
             this.btnPrevCatalog.UseVisualStyleBackColor = true;
+            this.btnPrevCatalog.Click += new System.EventHandler(this.btnPrevCatalog_Click);
             // 
-            // listView1
+            // panelContent
             // 
-            this.listView1.BackgroundImageTiled = true;
-            resources.ApplyResources(this.listView1, "listView1");
-            this.listView1.Name = "listView1";
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.panelContent.Controls.Add(this.lbContent);
+            resources.ApplyResources(this.panelContent, "panelContent");
+            this.panelContent.Name = "panelContent";
+            // 
+            // lbContent
+            // 
+            resources.ApplyResources(this.lbContent, "lbContent");
+            this.lbContent.Name = "lbContent";
+            this.lbContent.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbContent_MouseMove);
             // 
             // toolStrip1
             // 
@@ -185,8 +186,9 @@
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
-            this.pContent.ResumeLayout(false);
             this.pControl.ResumeLayout(false);
+            this.panelContent.ResumeLayout(false);
+            this.panelContent.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -203,14 +205,14 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiNightStyle;
         private System.Windows.Forms.ToolStripMenuItem tsmiNomalStyle;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.Panel pContent;
         private System.Windows.Forms.ToolStripDropDownButton tsBooks;
         private System.Windows.Forms.Panel pControl;
         private System.Windows.Forms.Button btnNextPage;
         private System.Windows.Forms.Button btnPrevPage;
         private System.Windows.Forms.Button btnNextCatalog;
         private System.Windows.Forms.Button btnPrevCatalog;
+        private System.Windows.Forms.Panel panelContent;
+        private System.Windows.Forms.TextBox lbContent;
     }
 }
 

@@ -241,13 +241,13 @@
     <value>3</value>
   </data>
   <data name="pControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>360, 374</value>
+    <value>347, 387</value>
   </data>
   <data name="pControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>373, 76</value>
   </data>
   <data name="pControl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;pControl.Name" xml:space="preserve">
     <value>pControl</value>
@@ -256,51 +256,51 @@
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;pControl.Parent" xml:space="preserve">
-    <value>pContent</value>
+    <value>toolStripContainer1.ContentPanel</value>
   </data>
   <data name="&gt;&gt;pControl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="pContent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, -14</value>
+  <data name="lbContent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 25</value>
   </data>
-  <data name="pContent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1067, 501</value>
+  <data name="lbContent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 21</value>
   </data>
-  <data name="pContent.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="lbContent.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;pContent.Name" xml:space="preserve">
-    <value>pContent</value>
+  <data name="&gt;&gt;lbContent.Name" xml:space="preserve">
+    <value>lbContent</value>
   </data>
-  <data name="&gt;&gt;pContent.Type" xml:space="preserve">
+  <data name="&gt;&gt;lbContent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbContent.Parent" xml:space="preserve">
+    <value>panelContent</value>
+  </data>
+  <data name="&gt;&gt;lbContent.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panelContent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>300, 158</value>
+  </data>
+  <data name="panelContent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 100</value>
+  </data>
+  <data name="panelContent.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panelContent.Name" xml:space="preserve">
+    <value>panelContent</value>
+  </data>
+  <data name="&gt;&gt;panelContent.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;pContent.Parent" xml:space="preserve">
+  <data name="&gt;&gt;panelContent.Parent" xml:space="preserve">
     <value>toolStripContainer1.ContentPanel</value>
   </data>
-  <data name="&gt;&gt;pContent.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="listView1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, -14</value>
-  </data>
-  <data name="listView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1070, 570</value>
-  </data>
-  <data name="listView1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;listView1.Name" xml:space="preserve">
-    <value>listView1</value>
-  </data>
-  <data name="&gt;&gt;listView1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listView1.Parent" xml:space="preserve">
-    <value>toolStripContainer1.ContentPanel</value>
-  </data>
-  <data name="&gt;&gt;listView1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;panelContent.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
