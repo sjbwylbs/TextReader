@@ -12,15 +12,14 @@
 `
 书库，按章节阅读，上一章，下一章，换肤。‘
 暂时不提供换页功能。
-`
 
-`
-本读书器基于www.uutxt.com下载的txt小说为蓝本制作
+本读书器基于www.uutxt.com下载的txt小说为规则蓝本制作
 附上两本小说
 巫颂:http://download.codeplex.com/download?ProjectName=textbookreader&DownloadId=215830
 邪风曲:http://download.codeplex.com/download?ProjectName=textbookreader&DownloadId=215832
 
 `
-
+## 效果图
+![软件首页](http://download.codeplex.com/download?ProjectName=textbookreader&DownloadId=218418)
 
 ** 声明：我跟uutxt无任何关系，如果真的说有关系就是我在这个网站下载过几本小说
